@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home || Brighter Youth & Women Initiative - Empowering Change</title>
+    <meta name="description"
+        content="Brighter Youth & Women Initiative is dedicated to empowering women and youth through education, mentorship, and sustainable opportunities." />
+    <meta name="keywords"
+        content="charity, women empowerment, youth programs, NGO, community development, donations, education, mentorship" />
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="Brighter Youth & Women Initiative - Empowering Change">
+    <meta property="og:description"
+        content="Join us in making a difference by supporting women's and youth empowerment through education and mentorship.">
+    <meta property="og:image" content="assets/images/favicons/favicon.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card (For Twitter Previews) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brighter Youth & Women Initiative - Empowering Change">
+    <meta name="twitter:description" content="Making a difference by empowering women and youth.">
+    <meta name="twitter:image" content="assets/images/favicons/favicon.png">
+
+
+
+
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="Sopot HTML Template For Charity" />
+
+    <!-- fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/sopot-icons/style.css">
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-select/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/vendors/timepicker/timePicker.css" />
+
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="assets/css/sopot.css" />
+    <link rel="stylesheet" href="assets/css/sopot-responsive.css" />
+</head>
+
+
+<style>
+    :root {
+        --primary-color: #FFD700;
+        --secondary-color: #3CB371;
+        --text-color: #333;
+        --background-color: #f0f4f7;
+        --card-background: #fff;
+        --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        background: url(./assets/images/backgrounds/bghero.jpg) var(--background-color);
+        background-blend-mode: overlay;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .login-container {
+        background-color: var(--card-background);
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        transform: translateY(30px);
+        opacity: 0;
+        animation: slideUp 1s ease forwards;
+    }
+
+    @keyframes slideUp {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .logo-area h1 {
+        color: var(--primary-color);
+        font-size: 1.8em;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .logo-area h2 {
+        color: var(--text-color);
+        font-size: 1.2em;
+        margin-bottom: 25px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+        animation: fadeIn 0.8s ease-in;
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-color);
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        border-style: none;
+        border-bottom: 2px solid var(--primary-color);
+        border-radius: 5px;
+        font-size: 1em;
+        outline: none;
+        background-color: #fafafa;
+        transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+        border-color: var(--secondary-color);
+        transform: scale(1.02);
+        background-color: #fff;
+    }
+
+    /* Primary Button */
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-color);
+        color: #222;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary.loading {
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+    /* Spinner for loading */
+    .btn-primary.loading::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-top: 2px solid var(--primary-color);
+        border-radius: 50%;
+        position: absolute;
+        right: 15px;
+        animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .forgot-password {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 0.9em;
+        display: block;
+        margin-top: 10px;
+        transition: color 0.3s;
+    }
+
+    .forgot-password:hover {
+        color: #2e8b57;
+        text-decoration: underline;
+    }
+
+    .logo img {
+        max-width: 100px;
+        margin-bottom: 15px;
+        animation: logoanimate 3s infinite;
+    }
+
+    .status-message {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    .status-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        opacity: 1;
+    }
+
+    .status-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        opacity: 1;
+    }
+
+    @keyframes logoanimate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        20% {
+            transform: rotate(5deg);
+        }
+
+        50% {
+            transform: rotate(-5deg);
+        }
+
+        80%,
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div id="authStatusMessage" class="status-message"></div>
+
+    <div class="login-container">
+
+        <div class="logo-area">
+            <div class="logo">
+                <img src="./assets/images/favicons/logo.jpg" alt="Logo">
+            </div>
+            <h1>Brighter Youth</h1>
+            <h2>Login Portal</h2>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username/Email</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-primary">Log In</button>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </form>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCte4FcJjNe2Eb2N0pX4VVjLNmgfvbaJyg",
+            authDomain: "brighteryouth.firebaseapp.com",
+            projectId: "brighteryouth",
+            storageBucket: "brighteryouth.firebasestorage.app",
+            messagingSenderId: "1043623979021",
+            appId: "1:1043623979021:web:1489743749c847f8860d44",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const statusMessage = document.getElementById("authStatusMessage");
+
+        function showStatus(message, isError = false) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${isError ? "error" : "success"}`;
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const submitButton = this.querySelector('button[type="submit"]');
+
+            if (email === "" || password === "") {
+                showStatus('Please enter both email and password.', true);
+                return;
+            }
+
+            submitButton.classList.add('loading');
+            showStatus('Logging in...', false);
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                showStatus(`Authentication successful! Welcome, ${user.email}.`, false);
+
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+
+            } catch (error) {
+                console.error("Login Error:", error.code, error.message);
+
+                let errorMessage;
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                    case 'auth/user-not-found':
+                    case 'auth/wrong-password':
+                    case 'auth/invalid-credential':
+                        errorMessage = "Invalid email or password. Please try again.";
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = "This user account has been disabled.";
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = "Access temporarily blocked due to too many failed login attempts.";
+                        break;
+                    default:
+                        errorMessage = "Login failed. Please check your credentials.";
+                        break;
+                }
+
+                showStatus(errorMessage, true);
+
+            } finally {
+                submitButton.classList.remove('loading');
+            }
+        });
+
+        document.querySelector('.forgot-password').addEventListener('click', (e) => {
+            e.preventDefault();
+            showStatus("Password reset functionality coming soon.", false);
+        });
+    </script>
+</body>
+
+</html>

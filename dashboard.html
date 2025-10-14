@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BYWI Admin Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen font-sans flex">
+
+    <!-- Sidebar -->
+    <aside
+        class="fixed top-0 left-0 h-screen w-64 bg-gradient-to-b from-blue-700 to-blue-500 text-white flex flex-col justify-between">
+        <div>
+            <div class="p-6 text-2xl font-bold border-b border-blue-400 text-center">BYWI Admin</div>
+
+            <nav class="mt-6 flex flex-col space-y-2 px-4">
+                <button
+                    class="tab-button active w-full text-left py-2.5 px-4 rounded-lg bg-blue-900 hover:bg-blue-800 transition"
+                    data-tab="blogs">📝 Blogs</button>
+                <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
+                    data-tab="impacts">📈 Impacts</button>
+                <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
+                    data-tab="team">👥 Team</button>
+                <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
+                    data-tab="reviews">⭐ Reviews</button>
+                <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
+                    data-tab="gallery">🖼️ Gallery</button>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 ml-64 flex flex-col h-screen">
+
+        <!-- 🔹 Topbar -->
+        <header class="fixed top-0 left-64 right-0 bg-white shadow flex items-center justify-between px-6 py-4 z-10">
+            <h1 class="text-2xl font-semibold text-gray-800">Content Management</h1>
+            <div class="flex items-center gap-4">
+                <span class="text-gray-600">Welcome, <strong id="userName">Loading...</strong></span>
+                <button id="logoutBtn"
+                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium">
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- 🔹 Scrollable main content -->
+        <main class="flex-1 overflow-y-auto mt-20 p-6">
+
+            <!-- BLOGS TAB -->
+            <section id="blogs" class="tab-content active">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Upload New Blog Post</h2>
+
+                <form id="blogForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="text" id="blogTitle" placeholder="Blog Title" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="blogCategory" placeholder="Category (e.g., Education, Community)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <textarea id="blogExcerpt" placeholder="Short Summary (1–2 sentences)" rows="3" required
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+                    <textarea id="blogContent" placeholder="Full Blog Content (Markdown supported)" rows="8" required
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+                    <input type="file" id="blogImage" accept="image/*" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                        Publish Blog
+                    </button>
+                </form>
+
+                <div class="content-list mt-6 grid gap-4"></div>
+            </section>
+
+            <!-- IMPACTS TAB -->
+            <section id="impacts" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Record New Impact/Effect</h2>
+                <form id="impactForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="text" id="impactTitle" placeholder="Impact Title (e.g., Women Empowered)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="number" id="impactCount" placeholder="Number (e.g., 500)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <textarea id="impactDescription" placeholder="Brief description of the impact" rows="3" required
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Save
+                        Impact</button>
+                </form>
+            </section>
+
+            <!-- TEAM TAB -->
+            <section id="team" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Team Member</h2>
+                <form id="teamForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="text" id="teamName" placeholder="Full Name" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="teamRole" placeholder="Role/Title (e.g., Project Coordinator)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="file" id="teamPhoto" accept="image/*" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Add
+                        Member</button>
+                </form>
+            </section>
+
+            <!-- REVIEWS TAB -->
+            <section id="reviews" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Review/Testimonial</h2>
+                <form id="reviewForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="text" id="reviewerName" placeholder="Reviewer Name" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="reviewerRole" placeholder="Role/Context (e.g., Beneficiary, Partner)"
+                        required class="w-full border border-gray-300 rounded-lg p-2" />
+                    <textarea id="reviewText" placeholder="Testimonial text" rows="5" required
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Post
+                        Review</button>
+                </form>
+            </section>
+
+            <!-- GALLERY TAB -->
+            <section id="gallery" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Upload Gallery Picture</h2>
+                <form id="galleryForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="file" id="galleryPhoto" accept="image/*" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="galleryCaption" placeholder="Image Caption/Description" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <button type="submit"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Upload
+                        Picture</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="./assets/js/user.js"></script>
+    <script type="module" src="./assets/js/dashboard.js"></script>
+
+    <script>
+        // Simple tab switcher
+        const tabs = document.querySelectorAll(".tab-button");
+        const contents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                tabs.forEach((b) => b.classList.remove("bg-blue-900", "text-white"));
+                contents.forEach((c) => c.classList.add("hidden"));
+
+                btn.classList.add("bg-blue-900", "text-white");
+                const activeTab = document.getElementById(btn.dataset.tab);
+                activeTab.classList.remove("hidden");
+            });
+        });
+    </script>
+</body>
+
+
+</html>
