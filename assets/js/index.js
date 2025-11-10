@@ -580,3 +580,45 @@ async function loadDonationDetails() {
 }
 
 document.addEventListener("DOMContentLoaded", loadDonationDetails);
+
+$(document).ready(function () {
+  // Create popup
+  const popup = $(`
+        <div id="donationPopup">
+            <h3>❤️ Donate to Our Cause</h3>
+            <p><strong>Account Name:</strong> Brighter Youth & Women Initiative</p>
+            <p><strong>Bank:</strong> TAJ </p>
+            <p><strong>Account No:</strong> 
+                <span id="acctNo">0013232499</span>
+                <button id="copyAcct" title="Copy Account Number">📋</button>
+            </p>
+            <p class="thankyou">Thank you for supporting our mission 💚</p>
+        </div>
+    `);
+
+  $("body").append(popup);
+
+  // Show popup with animation
+  function showPopup() {
+    $("#donationPopup").fadeIn(800);
+    setTimeout(() => {
+      $("#donationPopup").fadeOut(800);
+    }, 10000); // visible for 10s
+  }
+
+  // First popup after 30s
+  setTimeout(showPopup, 10000);
+
+  // Reappear every 30 mins
+  setInterval(showPopup, 30 * 60 * 1000);
+
+  // Copy to clipboard functionality
+  $(document).on("click", "#copyAcct", function () {
+    const acctNo = $("#acctNo").text();
+    navigator.clipboard.writeText(acctNo).then(() => {
+      const originalText = $(this).text();
+      $(this).text("✅");
+      setTimeout(() => $(this).text(originalText), 1500);
+    });
+  });
+});
