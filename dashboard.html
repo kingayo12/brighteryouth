@@ -13,6 +13,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
+    <link rel="stylesheet" href="./assets/css/sopot.css" />
+    <link rel="stylesheet" href="./assets/css/sopot-responsive.css" />
 </head>
 
 <body class="bg-gray-100 min-h-screen font-sans flex">
@@ -29,6 +32,8 @@
                     data-tab="blogs">📝 Blogs</button>
                 <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
                     data-tab="impacts">📈 Impacts</button>
+                <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
+                    data-tab="donations"> Donations</button>
                 <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
                     data-tab="team">👥 Team</button>
                 <button class="tab-button w-full text-left py-2.5 px-4 rounded-lg hover:bg-blue-800 transition"
@@ -61,17 +66,71 @@
             <section id="blogs" class="tab-content active">
                 <h2 class="text-xl font-semibold mb-4 text-gray-700">Upload New Blog Post</h2>
 
-                <form id="blogForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                <form id="blogForm" class="d-flex space-y-4 bg-white p-6 rounded-lg shadow">
+                    <!-- Blog Main Section -->
                     <input type="text" id="blogTitle" placeholder="Blog Title" required
                         class="w-full border border-gray-300 rounded-lg p-2" />
+
                     <input type="text" id="blogCategory" placeholder="Category (e.g., Education, Community)" required
                         class="w-full border border-gray-300 rounded-lg p-2" />
-                    <textarea id="blogExcerpt" placeholder="Short Summary (1–2 sentences)" rows="3" required
+
+                    <textarea id="blogShortSummary" placeholder="Short Summary (1–2 sentences)" rows="3" required
                         class="w-full border border-gray-300 rounded-lg p-2"></textarea>
-                    <textarea id="blogContent" placeholder="Full Blog Content (Markdown supported)" rows="8" required
+
+                    <textarea id="blogContent" placeholder="Main Blog Content" rows="8" required
                         class="w-full border border-gray-300 rounded-lg p-2"></textarea>
-                    <input type="file" id="blogImage" accept="image/*" required
+
+                    <label for="blogImagePath" class="block font-semibold">Main Image Path or URL</label>
+                    <input type="text" id="blogImagePath" placeholder="e.g. assets/images/blog1.jpg or https://..."
                         class="w-full border border-gray-300 rounded-lg p-2" />
+
+                    <!-- Secondary Section -->
+                    <h3 class="text-lg font-semibold mt-6">Secondary Section</h3>
+                    <input type="text" id="secondaryTitle" placeholder="Subsection Title (e.g. Donation)"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="secondaryImagePath" placeholder="Subsection Image Path or URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <textarea id="secondaryText1" placeholder="Secondary Paragraph 1" rows="3"
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+                    <textarea id="secondaryText2" placeholder="Secondary Paragraph 2" rows="3"
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+
+                    <!-- Bullet Points -->
+                    <h3 class="text-lg font-semibold mt-4">Key Points (4 items max)</h3>
+                    <input type="text" id="point1" placeholder="Point 1"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="point2" placeholder="Point 2"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="point3" placeholder="Point 3"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="point4" placeholder="Point 4"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+
+                    <!-- Tags -->
+                    <h3 class="text-lg font-semibold mt-4">Tags (comma-separated)</h3>
+                    <input type="text" id="blogTags" placeholder="e.g. Fundraising, Charity, Empowerment"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+
+                    <!-- Author Info -->
+                    <h3 class="text-lg font-semibold mt-4">Author Information</h3>
+                    <input type="text" id="authorName" placeholder="Author Name"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="authorImage" placeholder="Author Image Path or URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <textarea id="authorBio" placeholder="Short Author Bio" rows="3"
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+
+                    <!-- Social Links -->
+                    <h3 class="text-lg font-semibold mt-4">Social Links</h3>
+                    <input type="text" id="twitterLink" placeholder="Twitter URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="facebookLink" placeholder="Facebook URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="instagramLink" placeholder="Instagram URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="pinterestLink" placeholder="Pinterest URL"
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+
                     <button type="submit"
                         class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
                         Publish Blog
@@ -97,6 +156,55 @@
                 </form>
             </section>
 
+            <section id="donations" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Cause / Donation Campaign</h2>
+                <form id="donationForm" class="space-y-4 bg-white p-6 rounded-lg shadow">
+                    <input type="text" id="causeTitle"
+                        placeholder="Cause Title (e.g., Empowering Youth Through Education)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+
+                    <textarea id="causeDescription" placeholder="Short description of the cause" rows="4" required
+                        class="w-full border border-gray-300 rounded-lg p-2"></textarea>
+
+                    <input type="text" id="imagePath"
+                        placeholder="Image path (e.g., assets/images/resources/causes-1-1.jpg)" required
+                        class="w-full border border-gray-300 rounded-lg p-2" />
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">Raised Amount ($)</label>
+                            <input type="number" id="raisedAmount" placeholder="Amount raised" required
+                                class="w-full border border-gray-300 rounded-lg p-2" />
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">Goal Amount ($)</label>
+                            <input type="number" id="goalAmount" placeholder="Goal amount" required
+                                class="w-full border border-gray-300 rounded-lg p-2" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">Event Date</label>
+                            <input type="date" id="eventDate" required
+                                class="w-full border border-gray-300 rounded-lg p-2" />
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-1">Event Time</label>
+                            <input type="text" id="eventTime" placeholder="e.g., 10:00 am - 12:00 pm" required
+                                class="w-full border border-gray-300 rounded-lg p-2" />
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+                        Save Cause
+                    </button>
+                </form>
+                <div class="content-list mt-6"></div>
+            </section>
+
+
             <!-- TEAM TAB -->
             <section id="team" class="tab-content hidden">
                 <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Team Member</h2>
@@ -105,13 +213,19 @@
                         class="w-full border border-gray-300 rounded-lg p-2" />
                     <input type="text" id="teamRole" placeholder="Role/Title (e.g., Project Coordinator)" required
                         class="w-full border border-gray-300 rounded-lg p-2" />
-                    <input type="file" id="teamPhoto" accept="image/*" required
-                        class="w-full border border-gray-300 rounded-lg p-2" />
+                    <input type="text" id="teamPhotoPath" placeholder="Image Path (e.g., assets/images/team/jane.jpg)"
+                        required class="w-full border border-gray-300 rounded-lg p-2"
+                        value="assets/images/team/team-1-2.jpg" />
                     <button type="submit"
-                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Add
-                        Member</button>
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                        Add Member
+                    </button>
                 </form>
+
+                <!-- Team Members List -->
+                <div class="content-list mt-6"></div>
             </section>
+
 
             <!-- REVIEWS TAB -->
             <section id="reviews" class="tab-content hidden">
@@ -142,12 +256,14 @@
                         Picture</button>
                 </form>
             </section>
+            <div id="statusMessage" class="status-message"></div>
+
         </main>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="./assets/js/user.js"></script>
-    <script type="module" src="./assets/js/dashboard.js"></script>
+    <!-- <script type="module" src="./assets/js/user.js"></script> -->
+    <script type="module" src="./assets/js/dasboard.js"></script>
 
     <script>
         // Simple tab switcher
